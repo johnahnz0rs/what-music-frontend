@@ -1,6 +1,7 @@
 whatMusic
 by johnahnz0rs && hanapotski
 
+
 Sharing music is a time-revered method of connecting with friends, old and new. But too often, we have trouble describing our music tastes.
 
 We got your back. whatMusic eliminates the vague and stuttering answers by SHOWING you whatMusic you have in common.
