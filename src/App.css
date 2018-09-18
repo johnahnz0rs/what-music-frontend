@@ -1,28 +1,155 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.root-div {
+    /*background-color: #EEB1B8;*/
+    min-height: 700px;
 }
-
-.App-title {
-  font-size: 1.5em;
+/* Login.js */
+.container {
+    margin: 0;
 }
-
-.App-intro {
-  font-size: large;
+.login-comp-background {
+    height: 667px;
+    width: 100%;
+    display: block;
+    position: relative;
+    color: teal;
+    padding: 20px;
 }
+.login-comp-background:after {
+    content: '';
+    background-image: url('./listen-music.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    opacity: 0.66;
+    z-index: -1;
+}
+.login-text {
+    font-size: 14pt;
+    text-align: center;
+}
+.btn-login {
+    display: block;
+    margin: 0 auto;
+}
+/* end Login.js */
 
+
+
+
+
+/* User.js */
+.greeting-header {
+    display: inline-block;
+    width: 95%;
+    text-align: center;
+}
+.btn-prof-find-common {
+    width: 95%;
+    margin: 0 auto;
+}
+/* end User.js */
+
+
+
+
+
+/* Profile.js */
+.btn-show-artist-genre-song {
+    width: 95%;
+}
+.div-artist-genre-song {
+    width: 80%;
+    margin: 0 auto;
+}
+/* end Profile.js */
+
+
+
+
+/* FindCommon.js */
+.search-email {
+    width: 90%;
+    border: 1px solid black;
+    display: block;
+    margin: 0 auto;
+}
+.btn-submit-search {
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+}
+.display-find-common-search-results {
+    margin: 0 auto;
+    text-align: center;
+}
+.display-inline {
+    display: inline-block;
+}
+/* end FindCommon.js */
+
+
+
+
+
+/* stray styles */
+.displayProfileOrMatch {
+    width: 95%;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+.side-by-side {
+    border: 1px solid black;
+    width: 40%;
+    margin: 0 auto;
+    display: inline-block;
+}
+.my-left-col {
+    border: 1px solid black;
+    margin: 10px;
+    width: 40%;
+    display: inline-block;
+}
+.my-right-col {
+    border: 1px solid black;
+    margin: 10px;
+    width: 40%;
+    display: inline-block;
+}
+/* end stray styles*/
+
+
+
+
+
+/* misc styling */
+.underline-text {
+    text-decoration: underline;
+}
+.italic-text {
+    font-style: italic;
+}
+.bold-text {
+    font-weight: bold;
+}
+.blue-text {
+    color: blue;
+}
+.white-text {
+    color: white;
+}
+.center-list {
+    text-align: center;
+    list-style-position: inside;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+/* end misc styling */
