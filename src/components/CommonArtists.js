@@ -4,7 +4,7 @@ const CommonArtists = props => {
 
     return (
         <React.Fragment>
-            {props.commonArtits && props.commonArtists.map(artist => <li key={artist.id}>{artist.name}</li>)}
+            {props.commonArtists && props.commonArtists.map(artist => <li key={artist.id}>{artist.name}</li>)}
         </React.Fragment>
     );
 
