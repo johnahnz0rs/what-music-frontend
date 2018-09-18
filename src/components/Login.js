@@ -16,8 +16,8 @@ const Login = props => {
                         </p>
                     </p>
                     <p className="col s8 left-align">
-                        <span className="bold-text underline-text">@whatMusic</span>, <span className="italic-text">we got your back, bro!</span>
-                        <br />We SHOW yous what music yous got in common, so you can git busy.
+                        @<span className="bold-text underline-text">whatMusic</span> <span className="italic-text">we got your back, bro!</span>
+                        <br />We SHOW YOU what music yous both like, so you can git busy.
                     </p>
                     <p className="col s12 left-align">#havefun #besafe #onelove</p>
                 </div>
@@ -28,8 +28,7 @@ const Login = props => {
                             type="submit"
                             name="action"
                             onClick={() => (window.location = 'http://localhost:8888/login')}
-                        >
-                            {/* http://localhost:8888/login is the backend server. maybe u need to idk set it to ur backend heroku app */}
+                        > {/* http://localhost:8888/login is the backend server. maybe u need to idk set it to ur backend heroku app */}
                             Sign in with Spotify
                             <i className="material-icons right">send</i>
                         </button>
