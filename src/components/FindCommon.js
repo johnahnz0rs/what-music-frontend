@@ -61,6 +61,7 @@ class FindCommon extends React.Component {
             }
         }
         // after all iterations, set state;
+        console.log('*** common artists found ***', commonArtists);
         this.setState({artistsInCommon: commonArtists});
     }
 
