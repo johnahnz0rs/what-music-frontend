@@ -37,6 +37,11 @@
     font-size: 14pt;
     text-align: center;
 }
+.splash-hashtags {
+    display: inline;
+    list-style: none;
+    margin-top: 20px;
+}
 .btn-login {
     display: block;
     margin: 0 auto;

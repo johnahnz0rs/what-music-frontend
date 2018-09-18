@@ -10,18 +10,18 @@ const Login = props => {
             <div className="container login-comp-background">
                 <div className="row center-align login-text">
                     <p className="col offset-s6 bold-text">
-                        <span className="underline-text">Exploring music</span>
-                        <br /><span className="underline-text">together</span> is a great way to get to know your new friend(s).
-                        <p>But very often,
-                        {/* <br/> it's too difficult to describe our music tastes clearly. */}
-                            <br />it's hard to list what music we listen to.
-                        </p>
+                        <span className="underline-text">Exploring music
+                        <br />together</span> is a great way to get to know your new friend(s).
+                        <br />But sometimes,
+                        <br />it's hard to list what music we listen to.
                     </p>
-                    <p className="col s8 left-align">
-                        @<span className="bold-text underline-text">whatMusic</span> <span className="italic-text">we got your back, bro!</span>
-                        <br />We SHOW YOU what music yous both like, so you can git busy.
+                    <p className="col s12 left-align">
+                        <span className="col s8">
+                            @<span className="bold-text underline-text">whatMusic</span> <span className="italic-text">we got your back.</span>
+                            <br />We show you what music yous both like, so you can get going!
+                        </span>
+                        <span className="col s12 splash-hashtags"> #besafe #havefun #onelove</span>
                     </p>
-                    <p className="col s12 left-align">#havefun #besafe #onelove</p>
                 </div>
                 <div className="row">
                     <div className="center-align">
