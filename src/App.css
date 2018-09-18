@@ -9,8 +9,8 @@
     margin: 0 auto;
 }
 .login-comp-background {
-    height: 100vh;
-    width: auto;
+    min-height: 667px;
+    width: 100%;
     display: block;
     position: relative;
     color: teal;
@@ -18,8 +18,6 @@
 }
 .login-comp-background:after {
     content: '';
-    width: 100%;
-    /*height: 100vh;*/
     background-image: url('./listen-music.jpg');
     background-size: cover;
     background-repeat: no-repeat;
