@@ -7,11 +7,12 @@ class FindCommon extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            me: props.me,
+            user: props.user,
             searchEmail: '',
             compareFriend: {},
             artistsInCommon: [],
-            genresInCommon: []
+            genresInCommon: [],
+            backendURL: 'https://what-music-backend.herokuapp.com'
         }
         this.search = this.search.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
@@ -34,7 +35,7 @@ class FindCommon extends React.Component {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         };
-        fetch(`http://localhost:8888/api/user/${this.state.searchEmail}`, config)
+        fetch(`${this.state.backendURL}/api/user/${this.state.searchEmail}`, config)
             .then(res => res.json())
             .then(friend => {
                 this.setState({compareFriend: friend});
@@ -51,9 +52,9 @@ class FindCommon extends React.Component {
         // for each artist in friend's favArtists;
         for (let f in friend.favArtists) {
             //compare to each of my favArtists;
-            for (let i in this.state.me.favArtists) {
+            for (let i in this.state.user.favArtists) {
                 // if there's a match;
-                if (friend.favArtists[f].id === this.state.me.favArtists[i].id) {
+                if (friend.favArtists[f].id === this.state.user.favArtists[i].id) {
                     // then push to local array;
                     commonArtists.push({id: friend.favArtists[i].id, name: friend.favArtists[i].name});
                 }
@@ -71,8 +72,8 @@ class FindCommon extends React.Component {
             friend.favGenres = this.getFavGenres(friend);
         }
         for (let f in friend.favGenres) {
-            for (let i in this.state.me.favGenres) {
-                if (friend.favGenres[f].genre === this.state.me.favGenres[i].genre) {
+            for (let i in this.state.user.favGenres) {
+                if (friend.favGenres[f].genre === this.state.user.favGenres[i].genre) {
                     // console.log('** we got a matching genre here! ***');
                     commonGenres.push(friend.favGenres[f].genre);
                 }

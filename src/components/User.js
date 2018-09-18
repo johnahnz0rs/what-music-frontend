@@ -8,7 +8,8 @@ class User extends React.Component {
         this.state = {
             user: {},
             showProfile: false,
-            showFindCommon: false
+            showFindCommon: false,
+            backendURL: 'https://what-music-backend.herokuapp.com'
         };
         this.goToProfile = this.goToProfile.bind(this);
         this.goToFindCommon = this.goToFindCommon.bind(this);
@@ -51,12 +52,12 @@ class User extends React.Component {
                         console.log('*** this is the formatted user ***', user);
                         this.setState({user});
                         // create postConfig and save user to dbase
-                        const postConfig = {
+                        const putConfig = {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(user)
                         };
-                        fetch('http://localhost:8888/api/user', postConfig)
+                        fetch(`${this.state.backendURL}/api/user`, putConfig)
                             .then(() => console.log('*** save to dbase successful! ***'))
                             .catch(err => console.log(err));
                     });
@@ -112,7 +113,7 @@ class User extends React.Component {
 
                 <div className="row displayProfileOrMatch">
                     {this.state.showProfile && this.state.user && <Profile profile={this.state.user} />}
-                    {this.state.showFindCommon && this.state.user.favArtists && <FindCommon me={this.state.user} />}
+                    {this.state.showFindCommon && this.state.user.favArtists && <FindCommon user={this.state.user} />}
                 </div>
 
             </React.Fragment>

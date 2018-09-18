@@ -2,6 +2,8 @@ import React from 'react';
 
 const Login = props => {
 
+    const backendURL = 'https://what-music-backend.herokuapp.com';
+
     return (
 
         <React.Fragment>
@@ -11,7 +13,7 @@ const Login = props => {
                         <span className="underline-text">Exploring music</span>
                         <br /><span className="underline-text">together</span> is a great way to get to know your new friend(s).
                         <p>But very often,
-                        {/*<br/> it's too difficult to describe our music tastes clearly.*/}
+                        {/* <br/> it's too difficult to describe our music tastes clearly. */}
                             <br />it's hard to list what music we listen to.
                         </p>
                     </p>
@@ -27,8 +29,12 @@ const Login = props => {
                             className="btn waves-effect waves-light btn-login"
                             type="submit"
                             name="action"
-                            onClick={() => (window.location = 'http://localhost:8888/login')}
-                        > {/* http://localhost:8888/login is the backend server. maybe u need to idk set it to ur backend heroku app */}
+                            onClick={() => {
+                                console.log(`backendURL: ${backendURL}`);
+                                (window.location = `${backendURL}/login`)
+                                }
+                            }
+                        >
                             Sign in with Spotify
                             <i className="material-icons right">send</i>
                         </button>
