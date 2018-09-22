@@ -35,7 +35,7 @@ class FindCommon extends React.Component {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         };
-        fetch(`${this.state.backendURL}/api/user/${this.state.searchEmail}`, config)
+        fetch(`${this.state.backendURL}/dbase/user/${this.state.searchEmail}`, config)
             .then(res => res.json())
             .then(friend => {
                 this.setState({compareFriend: friend});

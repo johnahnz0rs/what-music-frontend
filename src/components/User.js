@@ -1,15 +1,22 @@
 import React from 'react';
 import Profile from './Profile';
 import FindCommon from './FindCommon';
+import TopFiveArtists from './TopFiveArtists';
+import TopFiveGenres from './TopFiveGenres';
+import AllFavArtists from './AllFavArtists';
+import AllFavGenres from './AllFavGenres';
 
 class User extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             user: {},
-            showProfile: false,
+            showProfile: true,
             showFindCommon: false,
-            backendURL: 'https://what-music-backend.herokuapp.com'
+            // backendURL: 'https://what-music-backend.herokuapp.com'
+            backendURL: 'http://localhost:8000',
+            showAllFavArtists: false,
+            showAllFavGenres: false
         };
         this.goToProfile = this.goToProfile.bind(this);
         this.goToFindCommon = this.goToFindCommon.bind(this);
@@ -28,14 +35,28 @@ class User extends React.Component {
         fetch('https://api.spotify.com/v1/me', getConfig)
             .then(res => res.json())
             .then(data => {
-                const user = {
-                    spotifyID: data.id,
-                    display_name: data.display_name,
+                console.log("*** spotify/v1/me ***", data);
+                let user = {
                     email: data.email,
-                    image: data.image,
-                    spotify_url: data.external_urls.spotify,
-                    favGenres: [],
-                    favArtists: []
+                    user: {
+                      fname: data.display_name.split(' ')[0].toString(),
+                      lname: data.display_name.split(' ')[data.display_name.split.length-1].toString(),
+                      linitial: data.display_name.split(' ')[data.display_name.split.length-1][0].toString(),
+                      email: data.email
+                    },
+                    spotify: {
+                        id: data.id,
+                        display_name: data.display_name,
+                        email: data.email,
+                        images: data.images,
+                        spotify_url: data.external_urls.spotify,
+                        favGenres: [],
+                        favArtists: [],
+                        birthdate: data.birthdate,
+                        country: data.country,
+                        followers: data.followers,
+                        href: data.href
+                    }
                 };
 
                 // get my topArtists;
@@ -43,13 +64,17 @@ class User extends React.Component {
                     .then(res => res.json())
                     .then(artists => {
                         // make a sorted list (by popularity) of favArtists;
-                        user.favArtists = artists.items.sort((a,b) => {
-                            return b.popularity - a.popularity;
-                        });
+                        // user.favArtists = artists.items.sort((a,b) => {
+                        //     return b.popularity - a.popularity;
+                        // });
+
+                        user.spotify.favArtists = artists.items;
+
                         // make a sorted list (by count) of favGenres;
-                        user.favGenres = this.getMyTopGenres(artists.items);
+                        user.spotify.favGenres = this.getMyTopGenres(artists.items);
                         // update state.user;
                         console.log('*** this is the formatted user ***', user);
+                        console.log('*** this is data from /dbase/v1/me ***', data);
                         this.setState({user});
                         // create postConfig and save user to dbase
                         const putConfig = {
@@ -57,8 +82,8 @@ class User extends React.Component {
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(user)
                         };
-                        fetch(`${this.state.backendURL}/api/user`, putConfig)
-                            .then(() => console.log('*** save to dbase successful! ***'))
+                        fetch(`${this.state.backendURL}/dbase/user`, putConfig)
+                            .then(msg => console.log('*** response ***', msg))
                             .catch(err => console.log(err));
                     });
             });
@@ -98,22 +123,26 @@ class User extends React.Component {
     render() {
         return (
             <React.Fragment>
+                {this.state.user.user &&
                 <div className="row center-align">
-                    <h3 className="greeting-header">Hi, {this.state.user.display_name}</h3>
-                </div>
-
-                <div className="row center-align">
-                    <div className="col s6">
-                        <button className="waves-effect waves-dark btn btn-prof-find-common" onClick={this.goToProfile}><i className="material-icons left">cloud</i>My Profile</button>
+                    <div className="col s3">
+                        <img className="home-avatar" src={this.state.user.spotify.images[0].url} />
+                        <span className="bold-text">{this.state.user.user.fname} {this.state.user.user.linitial}.</span>
+                        <span>({this.state.user.spotify && <span>Spotify</span>}{this.state.user.soundcloud && <span>, SoundCloud</span>}{this.state.user.apple && <span>, Apple Music</span>})</span>
                     </div>
-                    <div className="col s6 center-align">
-                        <button className="waves-effect waves-dark btn btn-prof-find-common" onClick={this.goToFindCommon}><i className="material-icons left">send</i>compare music with a friend</button>
+                    <div className="col s5">
+                        {this.state.showProfile && this.state.user.spotify && <h4>My Profile</h4>}
+                        {this.state.showFindCommon && this.state.user.spotify && <h4>Compare w Friends</h4>}
                     </div>
-                </div>
+                    <div className="col s4 center-align">
+                        {this.state.showProfile && this.state.user.spotify && <button className="waves-effect waves-light btn-large compare-button" onClick={this.goToFindCommon}>Friends</button>}
+                        {this.state.showFindCommon && this.state.user.spotify && <button className="waves-effect waves-light btn-large compare-button" onClick={this.goToProfile}>Me</button>}
+                    </div>
+                </div>}
 
-                <div className="row displayProfileOrMatch">
-                    {this.state.showProfile && this.state.user && <Profile profile={this.state.user} />}
-                    {this.state.showFindCommon && this.state.user.favArtists && <FindCommon user={this.state.user} />}
+                <div className="row display-profile-or-find-common">
+                    {this.state.showProfile && this.state.user.spotify && <Profile user={this.state.user} />}
+                    {this.state.showFindCommon && this.state.user.spotify && <FindCommon user={this.state.user} />}
                 </div>
 
             </React.Fragment>

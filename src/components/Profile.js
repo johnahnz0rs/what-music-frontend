@@ -1,61 +1,68 @@
 import React from 'react';
-import Artist from './Artist';
-import Genre from './Genre';
+import TopFiveArtists from './TopFiveArtists';
+import TopFiveGenres from './TopFiveGenres';
+import AllFavArtists from "./AllFavArtists";
+import AllFavGenres from "./AllFavGenres";
 
 class Profile extends React.Component  {
 
     constructor(props) {
         super(props)
         this.state = {
-            user: props.profile,
-            showTopArtists: false,
-            showTopGenres: false
+            user: props.user,
+            showAllFavArtists: false,
+            showAllFavGenres: false
         }
-        this.showArtists = this.showArtists.bind(this);
-        this.showGenres = this.showGenres.bind(this);
-        this.printState = this.printState.bind(this);
+        // this.printState = this.printState.bind(this);
+        this.showAllFavArtists = this.showAllFavArtists.bind(this);
+        this.showAllFavGenres = this.showAllFavGenres.bind(this);
     }
 
-
-    showArtists() {
-        this.setState({showTopArtists: true});
-        this.setState({showTopGenres: false});
+    componentDidMount() {
+        // console.log('*** param id ***', this.state.param_id);
+        // console.log('*** profile.js state.user ***', this.state.user);
+        this.setState({user: this.props.user});
     }
 
-    showGenres() {
-        this.setState({showTopGenres: true});
-        this.setState({showTopArtists: false});
+    showAllFavArtists() {
+        this.setState({ showAllFavArtists: true });
     }
 
-    printState() {
-        console.log('*** Profile.printState ***', this.state);
+    showAllFavGenres() {
+        this.setState({ showAllFavGenres: true });
     }
 
+    // printState() {
+    //     console.log('*** profile.js state.user ***', this.state.user);
+    // }
 
     render() {
         return (
             <React.Fragment>
-                <div className="row center-align">
-                    <h4 className="underline-text">Your Profile</h4>
-                </div>
-                <div className="row center-align">
-                    <div className="col s4 center-align">
-                        <button className="waves-effect waves-dark btn btn-artist-genre-song center-align" onClick={this.showArtists}>Fav Artists</button>
-                    </div>
-                    <div className="col s4 center-align">
-                        <button className="waves-effect waves-dark btn btn-artist-genre-song" onClick={this.showGenres}>Fav Genres</button>
-                    </div>
-                    <div className="col s4 center-align">
-                        <button className="waves-effect waves-dark btn btn-artist-genre-song disabled" onClick={this.showSongs}>Fav Tracks</button>
-                    </div>
+                {/*<button onClick={this.printState}>print state</button>*/}
+
+                <div className="show-fav-artists center-align">
+                    <h4>Your Top 5 Artists</h4>
+                    <a onClick={this.showAllFavArtists}>Show All Fav Artists</a>
+
+                    <ol className="fav-artist-genre-list">
+                        {!this.state.showAllFavArtists && this.state.user.spotify && <TopFiveArtists favArtists={this.state.user.spotify.favArtists} />}
+                    </ol>
+
+                    {this.state.showAllFavArtists && <ol className="fav-artist-genre-list"><AllFavArtists favArtists={this.state.user.spotify.favArtists} /></ol>}
                 </div>
 
+                <div className="show-fav-genres center-align">
+                    <h4>Your Top 5 Genres</h4>
+                    <a onClick={this.showAllFavGenres}>Show All Fav Genres</a>
 
+                    <ol className="fav-artist-genre-list">
+                        {!this.state.showAllFavGenres && this.state.user.spotify && <TopFiveGenres favGenres={this.state.user.spotify.favGenres} />}
+                    </ol>
 
-                <div className="row div-artist-genre-song center-align">
-                    {this.state.showTopArtists && <Artist favArtists={this.state.user.favArtists} />}
-                    {this.state.showTopGenres && <Genre favGenres={this.state.user.favGenres} />}
+                    {this.state.showAllFavGenres && <ol className="fav-artist-genre-list"><AllFavGenres favGenres={this.state.user.spotify.favGenres} /></ol>}
                 </div>
+
             </React.Fragment>
         );
     }

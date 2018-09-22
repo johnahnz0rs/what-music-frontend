@@ -6,12 +6,12 @@ const Navbar = props => {
         <React.Fragment>
             <nav>
                 <div className="nav-wrapper">
-                    <a href="#!" className="brand-logo">
+                    <a role="button" className="brand-logo">
                         whatMusic
                     </a>
-                    <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+                    <button data-target="mobile-menu" className="sidenav-trigger">
                         <i className="material-icons">menu</i>
-                    </a>
+                    </button>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li>
                             <a href="#">My Profile</a>
@@ -23,7 +23,7 @@ const Navbar = props => {
                 </div>
             </nav>
 
-            <ul className="sidenav" id="mobile-demo">
+            <ul className="sidenav" id="mobile-menu">
                 <li>
                     <a href="#">My Profile</a>
                 </li>
