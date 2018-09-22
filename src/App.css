@@ -61,6 +61,7 @@
     margin: auto;
     margin-top: 10px;
     width: 95%;
+    max-width: 100px;
     height: auto;
     display: block;
 }
