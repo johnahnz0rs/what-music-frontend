@@ -2,8 +2,8 @@ import React from 'react';
 
 const Login = props => {
 
-    // const backendURL = 'https://what-music-backend.herokuapp.com';
-    const backendURL = 'http://localhost:8000';
+    const backendURL = 'https://what-music-backend.herokuapp.com';
+    // const backendURL = 'http://localhost:8000';
     const lol = 'johnahnz0rs is l33t';
 
     return (
