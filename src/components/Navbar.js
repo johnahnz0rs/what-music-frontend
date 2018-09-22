@@ -5,19 +5,19 @@ const Navbar = props => {
     return (
         <React.Fragment>
             <nav>
-                <div className="nav-wrapper">
+                <div className="nav-wrapper center-align">
                     <a role="button" className="brand-logo">
                         whatMusic
                     </a>
-                    <button data-target="mobile-menu" className="sidenav-trigger">
+                    <button data-target="mobile-menu" className="sidenav-trigger btn-flat">
                         <i className="material-icons">menu</i>
                     </button>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li>
-                            <a href="#">My Profile</a>
+                            <button>My Profile</button>
                         </li>
                         <li>
-                            <a href="#">Compare Music</a>
+                            <button>Compare Music</button>
                         </li>
                     </ul>
                 </div>
@@ -25,10 +25,10 @@ const Navbar = props => {
 
             <ul className="sidenav" id="mobile-menu">
                 <li>
-                    <a href="#">My Profile</a>
+                    <button>My Profile</button>
                 </li>
                 <li>
-                    <a href="#">Compare Music</a>
+                    <button>Compare Music</button>
                 </li>
             </ul>
         </React.Fragment>

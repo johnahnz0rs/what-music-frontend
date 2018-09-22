@@ -60,7 +60,8 @@
 .home-avatar {
     margin: auto;
     margin-top: 10px;
-    width: 95%;
+    width: auto;
+    max-height: 100px;
     height: auto;
     display: block;
 }
@@ -74,13 +75,7 @@
 .compare-button {
     margin: 10px auto;
     /*height: 80px;*/
-}
-.btn-prof-find-common {
-    width: 95%;
-    margin: 0 auto;
-}
-.temp-menu-buttons {
-    margin: 10px auto;
+    vertical-align: middle;
 }
 .display-profile-or-find-common {
     width: 95%;
@@ -112,6 +107,10 @@
 
 
 /* FindCommon.js */
+.select-user-from-list {
+    border: 1px solid black;
+    height: 100px;
+}
 .search-email {
     width: 90%;
     border: 1px solid black;

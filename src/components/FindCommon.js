@@ -1,6 +1,7 @@
 import React from 'react';
 import CommonArtists from './CommonArtists';
 import CommonGenres from './CommonGenres';
+import AllUsers from './AllUsers';
 
 class FindCommon extends React.Component {
 
@@ -8,12 +9,13 @@ class FindCommon extends React.Component {
         super(props)
         this.state = {
             user: props.user,
+            allUsers: [],
             searchEmail: '',
             compareFriend: {},
             artistsInCommon: [],
             genresInCommon: [],
-            backendURL: 'https://what-music-backend.herokuapp.com'
-            // backendURL: 'http://localhost:8000'
+            // backendURL: 'https://what-music-backend.herokuapp.com'
+            backendURL: 'http://localhost:8000'
         }
         this.search = this.search.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
@@ -21,9 +23,37 @@ class FindCommon extends React.Component {
         this.findCommonGenres = this.findCommonGenres.bind(this);
         this.getFavGenres = this.getFavGenres.bind(this);
         this.printState = this.printState.bind(this);
+        this.getAllUsers = this.getAllUsers.bind(this);
     }
 
-    componentDidMount() { }
+    componentDidMount() {
+        this.getAllUsers();
+    }
+
+    getAllUsers() {
+        const getConfig = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        };
+        fetch(`${this.state.backendURL}/dbase/users/`, getConfig)
+            .then(res => res.json())
+            .then(foundAllUsers => {
+                // this.setState({allUsers: foundAllUsers});
+                // console.log('*** typeof foundAllUsers ***', typeof foundAllUsers);
+                // console.log(`*** getallUsers found ${foundAllUsers.length} users ***`, foundAllUsers);
+                let allUsersArray = [];
+                for (let i of foundAllUsers) {
+                    // console.log('***this is i of foundAllUsers ***', i);
+                    let userDeets = [{
+                        email: i.email,
+                        fname: i.user.fname,
+                        linitial: i.user.linitial}];
+                    allUsersArray.push(userDeets);
+                }
+                console.log('*** this is allUsersArray ***', allUsersArray);
+                this.setState({allUsers: allUsersArray});
+            });
+    }
 
     inputHandler(event) {
         let name = event.target.name,
@@ -32,11 +62,11 @@ class FindCommon extends React.Component {
     }
 
     search() {
-        const config = {
+        const getConfig = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         };
-        fetch(`${this.state.backendURL}/dbase/user/${this.state.searchEmail}`, config)
+        fetch(`${this.state.backendURL}/dbase/user/${this.state.searchEmail}`, getConfig)
             .then(res => res.json())
             .then(friend => {
                 this.setState({compareFriend: friend});
@@ -119,6 +149,8 @@ class FindCommon extends React.Component {
     render() {
         return (
             <React.Fragment>
+                {this.state.allUsers && <AllUsers allUsers={this.state.allUsers} />}
+
                 <div className="row center-align">
                     <input className="search-email center" type="text" name="searchEmail" placeholder="Enter Your Friend's Email" value={this.state.searchEmail} onChange={this.inputHandler}  />
                     {/* add a select element that lets the user choose someone to compare to, from either a list of allUsers or myFriends */}

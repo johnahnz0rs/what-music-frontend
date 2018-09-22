@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import User from './User';
-import Profile from './Profile';
+// import Profile from './Profile';
 import Login from './Login';
 import Navbar from './Navbar';
 

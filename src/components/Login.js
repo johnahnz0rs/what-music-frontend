@@ -2,9 +2,9 @@ import React from 'react';
 
 const Login = props => {
 
-    const backendURL = 'https://what-music-backend.herokuapp.com';
-    // const backendURL = 'http://localhost:8000';
-    const lol = 'johnahnz0rs is l33t';
+    // const backendURL = 'https://what-music-backend.herokuapp.com';
+    const backendURL = 'http://localhost:8000';
+
 
     return (
 
@@ -28,13 +28,12 @@ const Login = props => {
                 <div className="row">
                     <div className="center-align">
                         <button
+                            id="login-button"
                             className="btn waves-effect waves-light btn-login"
                             type="submit"
                             name="action"
-                            onClick={() => {
-                                {/* console.log(`backendURL: ${backendURL}`); */}
-                                (window.location = `${backendURL}/login`);
-                                }
+                            onClick={() =>
+                                window.location = `${backendURL}/login`
                             }
                         >
                             Sign in with Spotify
