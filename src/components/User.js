@@ -1,10 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
 import FindCommon from './FindCommon';
-import TopFiveArtists from './TopFiveArtists';
-import TopFiveGenres from './TopFiveGenres';
-import AllFavArtists from './AllFavArtists';
-import AllFavGenres from './AllFavGenres';
 
 class User extends React.Component {
     constructor(props) {
@@ -13,8 +9,8 @@ class User extends React.Component {
             user: {},
             showProfile: true,
             showFindCommon: false,
-            backendURL: 'https://what-music-backend.herokuapp.com',
-            // backendURL: 'http://localhost:8000',
+            // backendURL: 'https://what-music-backend.herokuapp.com',
+            backendURL: 'http://localhost:8000',
             showAllFavArtists: false,
             showAllFavGenres: false
         };
@@ -127,7 +123,7 @@ class User extends React.Component {
                 {this.state.user.user &&
                 <div className="row center-align">
                     <div className="col s3">
-                        <img className="home-avatar" src={this.state.user.spotify.images[0].url} />
+                        <img className="home-avatar" alt="" src={this.state.user.spotify.images[0].url} />
                         <span className="bold-text">{this.state.user.user.fname} {this.state.user.user.linitial}.</span>
                         <span>({this.state.user.spotify && <span>Spotify</span>}{this.state.user.soundcloud && <span>, SoundCloud</span>}{this.state.user.apple && <span>, Apple Music</span>})</span>
                     </div>
@@ -135,9 +131,9 @@ class User extends React.Component {
                         {this.state.showProfile && this.state.user.spotify && <h4>My Profile</h4>}
                         {this.state.showFindCommon && this.state.user.spotify && <h4>Compare w Friends</h4>}
                     </div>
-                    <div className="col s4 center-align">
-                        {this.state.showProfile && this.state.user.spotify && <button className="waves-effect waves-light btn-large compare-button" onClick={this.goToFindCommon}>Friends</button>}
-                        {this.state.showFindCommon && this.state.user.spotify && <button className="waves-effect waves-light btn-large compare-button" onClick={this.goToProfile}>Me</button>}
+                    <div className="col s4 center-align wrapper">
+                        {this.state.showProfile && this.state.user.spotify && <button className="waves-effect waves-light btn-large compare-button valign-wrapper" onClick={this.goToFindCommon}>Friends</button>}
+                        {this.state.showFindCommon && this.state.user.spotify && <button className="waves-effect waves-light btn-large compare-button valign-wrapper" onClick={this.goToProfile}>Me</button>}
                     </div>
                 </div>}
 

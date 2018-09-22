@@ -3,6 +3,7 @@ import React from 'react';
 const TopFiveGenres = props => {
 
     const genres = props.favGenres;
+
     return (
         <React.Fragment>
             <li key={genres[0].genre}><span className="bold-text">{genres[0].genre}</span> ({genres[0].count})</li>

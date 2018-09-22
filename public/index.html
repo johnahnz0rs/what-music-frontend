@@ -29,5 +29,21 @@
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
     </script>
+    <script>
+
+        $(document).ready(function() {
+            // start sidenav for mobile
+            $('.sidenav').sidenav();
+
+            // login button redirects to login process
+            document.getElementById("login-button").onclick = function() {
+                window.location.href = "http://localhost:8000/login";
+            };
+
+            // materialize form>select
+            $('select').formSelect();
+        });
+
+    </script>
   </body>
 </html>
