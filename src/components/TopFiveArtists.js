@@ -2,7 +2,7 @@ import React from 'react';
 
 const TopFiveArtists = props => {
 
-    let artists = props.favArtists;
+    const artists = props.favArtists;
 
     return (
         <React.Fragment>

@@ -2,15 +2,15 @@ import React from 'react';
 
 const TopFiveGenres = props => {
 
-    let genres = props.favGenres
+    const genres = props.favGenres;
 
     return (
         <React.Fragment>
-            <li key={genres[0].id}>{genres[0].genre}</li>
-            <li key={genres[1].id}>{genres[1].genre}</li>
-            <li key={genres[2].id}>{genres[2].genre}</li>
-            <li key={genres[3].id}>{genres[3].genre}</li>
-            <li key={genres[4].id}>{genres[4].genre}</li>
+            <li key={genres[0].genre}><span className="bold-text">{genres[0].genre}</span> ({genres[0].count})</li>
+            <li key={genres[1].genre}><span className="bold-text">{genres[1].genre}</span> ({genres[1].count})</li>
+            <li key={genres[2].genre}><span className="bold-text">{genres[2].genre}</span> ({genres[2].count})</li>
+            <li key={genres[3].genre}><span className="bold-text">{genres[3].genre}</span> ({genres[3].count})</li>
+            <li key={genres[4].genre}><span className="bold-text">{genres[4].genre}</span> ({genres[4].count})</li>
         </React.Fragment>
     );
 

@@ -14,7 +14,8 @@ class User extends React.Component {
             showProfile: true,
             showFindCommon: false,
             backendURL: 'https://what-music-backend.herokuapp.com',
-            // backendURL: 'http://localhost:8000',g
+
+            // backendURL: 'http://localhost:8000',
             showAllFavArtists: false,
             showAllFavGenres: false
         };
