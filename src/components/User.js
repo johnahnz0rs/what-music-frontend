@@ -64,7 +64,7 @@ class User extends React.Component {
                 fetch('https://api.spotify.com/v1/me/top/artists?limit=50', getConfig)
                     .then(res => res.json())
                     .then(artists => {
-                        make a sorted list (by popularity) of favArtists;
+                        // make a sorted list (by popularity) of favArtists;
                         user.favArtistsByGlobalPopularity = artists.items.sort((a,b) => {
                             return b.popularity - a.popularity;
                         });
