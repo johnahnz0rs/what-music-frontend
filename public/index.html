@@ -34,12 +34,16 @@
         $(document).ready(function() {
             // start sidenav for mobile
             $('.sidenav').sidenav();
+        });
 
+        $(document).ready(function() {
             // login button redirects to login process
-            document.getElementById("login-button").onclick = function() {
+            document.getElementById("login-button").onclick = function () {
                 window.location.href = "http://localhost:8000/login";
             };
+        });
 
+        $(document).ready(function() {
             // materialize form>select
             $('select').formSelect();
         });
