@@ -2,18 +2,13 @@ import React from 'react';
 
 const AllUsers = props => {
 
+    // console.log('*** allUsers.js allUsers ***', props.allUsers);
+
     return (
       <React.Fragment>
-          <div className="col s12 select-user-from-list">
-              {/*<select>*/}
-              {props.allUsers.map(user => {
-                  {/*<option value={user[0].email}>{user[0].fname} {user[0].linitial}</option>*/}
-                  {/*console.log('*** allUsers each user ***', user);*/}
-                  console.log(user[0].email, user[0].fname, user[0].linitial);
-                  <span className="bold-text">{user[0].email}, {user[0].fname}, {user[0].linitial}</span>
-              })}
-              {/*</select>*/}
-          </div>
+          {/*{props.allUsers.map(user => <span className="bold-text">{user[0].email}, {user[0].fname}, {user[0].linitial}</span>)}*/}
+          <p>hello world</p>
+          <p>{props.allUsers}</p>
       </React.Fragment>
     );
 

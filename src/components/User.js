@@ -9,8 +9,8 @@ class User extends React.Component {
             user: {},
             showProfile: true,
             showFindCommon: false,
-            backendURL: 'https://what-music-backend.herokuapp.com',
-            // backendURL: 'http://localhost:8000',
+            // backendURL: 'https://what-music-backend.herokuapp.com',
+            backendURL: 'http://localhost:8000',
             showAllFavArtists: false,
             showAllFavGenres: false
         };
@@ -74,14 +74,16 @@ class User extends React.Component {
                         console.log('*** this is data from /dbase/v1/me ***', data);
                         this.setState({user});
                         // create postConfig and save user to dbase
-                        const putConfig = {
+                        const postConfig = {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(user)
+                            body: JSON.stringify(this.state.user)
                         };
-                        fetch(`${this.state.backendURL}/dbase/user`, putConfig)
-                            .then(msg => console.log('*** response ***', msg))
+                        fetch(`${this.state.backendURL}/dbase/user`, postConfig)
+                            // .then(msg => console.log('*** response ***', msg))
+                            .then(() => console.log('*** lol ok ***'))
                             .catch(err => console.log(err));
+
                     });
             });
     }

@@ -14,8 +14,8 @@ class FindCommon extends React.Component {
             compareFriend: {},
             artistsInCommon: [],
             genresInCommon: [],
-            backendURL: 'https://what-music-backend.herokuapp.com'
-            // backendUrl: 'http://localhost:8000'
+            // backendURL: 'https://what-music-backend.herokuapp.com'
+            backendUrl: 'http://localhost:8000'
         }
         this.search = this.search.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
@@ -35,7 +35,7 @@ class FindCommon extends React.Component {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         };
-        fetch(`${this.state.backendURL}/dbase/users/`, getConfig)
+        fetch(`${this.state.backendURL}/dbase/allUsers/`, getConfig)
             .then(res => res.json())
             .then(foundAllUsers => {
                 // this.setState({allUsers: foundAllUsers});
@@ -52,7 +52,8 @@ class FindCommon extends React.Component {
                 }
                 console.log('*** this is allUsersArray ***', allUsersArray);
                 this.setState({allUsers: allUsersArray});
-            });
+            })
+            .catch(err => console.log(err));
     }
 
     inputHandler(event) {
@@ -157,24 +158,24 @@ class FindCommon extends React.Component {
                     <button className="waves-effect waves-dark btn btn-submit-search center" onClick={this.search}>Compare Your Favorite Music</button>
                 </div>
 
-                {/* <button className="waves-effect waves-dark btn" onClick={this.printState}>print state</button> */}
+                 <button className="waves-effect waves-dark btn" onClick={this.printState}>print state</button>
 
                 {/* think about how to style this div better*/}
-                <div className="row display-find-common-search-results">
-                    <div className="col sm6 display-inline">
-                        <h5 className="underline-text">common artists</h5>
-                        <ol className="center-list">
-                            {this.state.artistsInCommon && <CommonArtists commonArtists={this.state.artistsInCommon} />}
-                        </ol>
-                    </div>
+                {/*<div className="row display-find-common-search-results">*/}
+                    {/*<div className="col sm6 display-inline">*/}
+                        {/*<h5 className="underline-text">common artists</h5>*/}
+                        {/*<ol className="center-list">*/}
+                            {/*{this.state.artistsInCommon && <CommonArtists commonArtists={this.state.artistsInCommon} />}*/}
+                        {/*</ol>*/}
+                    {/*</div>*/}
 
-                    <div className="col sm6 display-inline">
-                        <h5 className="underline-text">common genres</h5>
-                        <ol className="center-list">
-                            {this.state.genresInCommon && <CommonGenres commonGenres={this.state.genresInCommon} /> }
-                        </ol>
-                    </div>
-                </div>
+                    {/*<div className="col sm6 display-inline">*/}
+                        {/*<h5 className="underline-text">common genres</h5>*/}
+                        {/*<ol className="center-list">*/}
+                            {/*{this.state.genresInCommon && <CommonGenres commonGenres={this.state.genresInCommon} /> }*/}
+                        {/*</ol>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
 
             </React.Fragment>
         );
