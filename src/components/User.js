@@ -13,8 +13,8 @@ class User extends React.Component {
             user: {},
             showProfile: true,
             showFindCommon: false,
-            backendURL: 'https://what-music-backend.herokuapp.com'
-            // backendURL: 'http://localhost:8000',
+            backendURL: 'https://what-music-backend.herokuapp.com',
+            // backendURL: 'http://localhost:8000',g
             showAllFavArtists: false,
             showAllFavGenres: false
         };
