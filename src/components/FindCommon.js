@@ -14,8 +14,8 @@ class FindCommon extends React.Component {
             compareFriend: {},
             artistsInCommon: [],
             genresInCommon: [],
-            // backendURL: 'https://what-music-backend.herokuapp.com'
-            backendUrl: 'http://localhost:8000'
+            backendURL: 'https://what-music-backend.herokuapp.com'
+            // backendUrl: 'http://localhost:8000'
         }
         this.search = this.search.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
