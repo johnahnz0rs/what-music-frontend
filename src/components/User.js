@@ -24,6 +24,7 @@ class User extends React.Component {
     }
 
     componentDidMount() {
+        console.log('*** lol johnahnz0rs is l33t ***');
         const searchParams = new URLSearchParams(window.location.search);
         const accessToken = searchParams.get('access_token');
 
