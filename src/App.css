@@ -17,11 +17,14 @@
     display: block;
     position: relative;
     color: teal;
+    /*color: white;*/
     padding: 20px;
 }
 .login-comp-background:after {
     content: '';
     background-image: url('./listen-music.jpg');
+    /*background-image: url('./couple1.jpg');*/
+    /*background-image: url('./couple2.png');*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -30,7 +33,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: 0.66;
+    /*opacity: 0.66;*/
+    opacity: 1;
     z-index: -1;
 }
 .login-text {
@@ -53,15 +57,41 @@
 
 
 /* User.js */
+.home-avatar {
+    margin: auto;
+    margin-top: 10px;
+    width: 95%;
+    height: auto;
+    display: block;
+}
 .greeting-header {
     display: inline-block;
+    margin-top: 10px;
     width: 95%;
     text-align: center;
+    font-size: xx-large;
+}
+.compare-button {
+    margin: 10px auto;
+    /*height: 80px;*/
 }
 .btn-prof-find-common {
     width: 95%;
     margin: 0 auto;
 }
+.temp-menu-buttons {
+    margin: 10px auto;
+}
+.display-profile-or-find-common {
+    width: 95%;
+    /*border: 1px solid black;*/
+    margin: 0 auto;
+}
+.fav-artist-genre-list {
+    list-style-position: inside;
+    text-align: center;
+}
+
 /* end User.js */
 
 
@@ -107,11 +137,6 @@
 
 
 /* stray styles */
-.displayProfileOrMatch {
-    width: 95%;
-    border: 1px solid black;
-    margin: 0 auto;
-}
 .side-by-side {
     border: 1px solid black;
     width: 40%;
