@@ -14,8 +14,8 @@ class FindCommon extends React.Component {
             compareFriend: {},
             artistsInCommon: [],
             genresInCommon: [],
-            backendURL: 'https://what-music-backend.herokuapp.com'
-            // backendUrl: 'http://localhost:8000'
+            // backendURL: 'https://what-music-backend.herokuapp.com'
+            backendUrl: 'http://localhost:8000'
         }
         this.search = this.search.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
@@ -27,33 +27,41 @@ class FindCommon extends React.Component {
     }
 
     componentDidMount() {
-        this.getAllUsers();
+        console.log('*** this is FindCommon.js ***');
+        // this.getAllUsers();
     }
 
     getAllUsers() {
         const getConfig = {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            Accept: 'application/json'
         };
-        fetch(`${this.state.backendURL}/dbase/allUsers/`, getConfig)
+        fetch(`/dbase/allUsers`, getConfig)
             .then(res => res.json())
             .then(foundAllUsers => {
-                // this.setState({allUsers: foundAllUsers});
                 // console.log('*** typeof foundAllUsers ***', typeof foundAllUsers);
-                // console.log(`*** getallUsers found ${foundAllUsers.length} users ***`, foundAllUsers);
+                // foundAllUsers.map(user => console.log('*** each users email ***', user.email));
+                // console.log('*** this is the result of FindCommon.findAllUsers ***', foundAllUsers);
+                // // this.setState({allUsers: foundAllUsers});
+                // // console.log('*** typeof foundAllUsers ***', typeof foundAllUsers);
+                // // console.log(`*** getallUsers found ${foundAllUsers.length} users ***`, foundAllUsers);
                 let allUsersArray = [];
-                for (let i of foundAllUsers) {
-                    // console.log('***this is i of foundAllUsers ***', i);
-                    let userDeets = [{
-                        email: i.email,
-                        fname: i.user.fname,
-                        linitial: i.user.linitial}];
-                    allUsersArray.push(userDeets);
-                }
-                console.log('*** this is allUsersArray ***', allUsersArray);
+                // for (let i of foundAllUsers) {
+                //     // console.log('***this is i of foundAllUsers ***', i);
+                //     let userDeets = [{
+                //         email: i.email,
+                //         fname: i.user.fname,
+                //         linitial: i.user.linitial}];
+                //     allUsersArray.push(userDeets);
+                // }
+                foundAllUsers.map(user => {
+                    allUsersArray.push(user.email)
+                });
+                // console.log('*** this is allUsersArray ***', allUsersArray);
                 this.setState({allUsers: allUsersArray});
             })
-            .catch(err => console.log(err));
+            // .catch(err => console.log(err));
     }
 
     inputHandler(event) {
@@ -158,7 +166,8 @@ class FindCommon extends React.Component {
                     <button className="waves-effect waves-dark btn btn-submit-search center" onClick={this.search}>Compare Your Favorite Music</button>
                 </div>
 
-                 <button className="waves-effect waves-dark btn" onClick={this.printState}>print state</button>
+                <button className="waves-effect waves-dark btn" onClick={this.printState}>print state</button>
+                <button className="waves-effect waves-dark btn" onClick={this.getAllUsers}>get All users</button>
 
                 {/* think about how to style this div better*/}
                 {/*<div className="row display-find-common-search-results">*/}
