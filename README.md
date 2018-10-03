@@ -1,5 +1,5 @@
 #whatMusic
-#####by johnahnz0rs & hanapotski
+#####by johnahnz0rs (https://github.com/johnahnz0rs) & hanapotski (https://github.com/hanapotski) & nicole change nyc (https://www.nayoung.design/)
 https://what-music.herokuapp.com
 
 
