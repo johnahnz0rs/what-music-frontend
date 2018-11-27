@@ -1,5 +1,5 @@
 {
-  "name": "whatmusic-test",
+  "name": "whatmusic",
   "version": "1.0.0",
   "scripts": {
     "server": "nodemon server.js",
