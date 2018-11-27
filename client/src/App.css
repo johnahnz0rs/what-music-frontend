@@ -1,0 +1,49 @@
+body {
+    color: white;
+}
+
+.navbar-nav{
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    margin-left: 50px;
+}
+.my-background {
+    content: '';
+    background-image: url('./assets/background.png');
+    /*background-image: url('./couple1.jpg');*/
+    /*background-image: url('./couple2.png');*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    padding-top: 120px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /*opacity: 0.66;*/
+    opacity: 1;
+    z-index: -1;
+}
+
+.navbar {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Login */
+.propaganda-text-stroke {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    font-weight: bold;
+}
+
+.propaganda-text-stroke-black {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    color: black;
+    font-weight: bold;
+}
+/* end Login*/
